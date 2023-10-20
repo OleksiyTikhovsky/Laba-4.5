@@ -1,0 +1,49 @@
+// Lab_04_5.cpp
+// < Tikhovsky Oleksiy  >
+// Лабораторна робота № 4.5
+// «Попадання» у проску фігуру.
+// Варіант 22
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+using namespace std;
+
+int main() {
+    double x, y, r;
+    srand((unsigned)time(NULL));
+
+    for (int i = 0; i < 10; i++) {
+        cout << "x = ";
+        cin >> x;
+        cout << "y = ";
+        cin >> y;
+        cout << "r = ";
+        cin >> r;
+
+        if ((x >= -r && x <= r) && (y >= -r && y <= r) &&
+            ((x * x + y * y <= r * r) ||
+             (y <= 0 && y >= -2 * x && y >= 2 * (x - r)))) {
+            cout << "yes" << endl;
+        } else {
+            cout << "no" << endl;
+        }
+    }
+
+    cout << endl << fixed;
+
+    for (int i = 0; i < 10; i++) {
+        x = 6.0 * rand() / RAND_MAX - 3;
+        y = 6.0 * rand() / RAND_MAX - 3;
+        r = 3;  // Задайте радіус r таким, як вам потрібно
+
+        if ((x >= -r && x <= r) && (y >= -r && y <= r) &&
+            ((x * x + y * y <= r * r) ||
+             (y <= 0 && y >= -2 * x && y >= 2 * (x - r))) ) {
+            cout << setw(8) << setprecision(4) << x << " " << setw(8) << setprecision(4) << y << " yes" << endl;
+        } else {
+            cout << setw(8) << setprecision(4) << x << " " << setw(8) << setprecision(4) << y << " no" << endl;
+        }
+    }
+
+    return 0;
+}
